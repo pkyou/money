@@ -10,9 +10,11 @@ public class DiscountFunction implements BiFunction<BigDecimal,BigDecimal,BigDec
     private BigDecimal threshold = new BigDecimal(100);
     @Override
     public BigDecimal apply(BigDecimal originPrice, BigDecimal discountPercent) {
-        if (originPrice.compareTo(threshold) == -1){
+        //此处有逻辑？
+        if (originPrice.compareTo(threshold) < 0){
             return originPrice;
         }
+
 
         return originPrice.add(originPrice.multiply(discountPercent).negate());
     }

@@ -13,7 +13,6 @@ public class PriceCalculatorImp implements IPriceCalculator {
     private TaxFunction taxFunction;
     @Override
     public BigDecimal Calculate(BigDecimal originPrice, BigDecimal discountPercent, BigDecimal rate) {
-        BigDecimal discountedPrice = discountFunction.apply(originPrice, discountPercent);
-        return taxFunction.apply(discountedPrice,rate);
+        return taxFunction.apply(discountFunction.apply(originPrice, discountPercent),rate);
     }
 }
